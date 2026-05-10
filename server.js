@@ -1,6 +1,10 @@
 // server.js
 import "dotenv/config";
 import express from "express";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 import stockRoutes from "./routes/stock.js";
 import v1Routes from "./routes/v1.js";
 import v2Routes from "./routes/v2.js";
@@ -46,8 +50,13 @@ app.get("/health", (_req, res) => {
   });
 });
 
-// API usage info
+// API Doc page
 app.get("/", (_req, res) => {
+  res.sendFile(resolve(__dirname, "../api-docs.html"));
+});
+
+// API usage info
+app.get("/info", (_req, res) => {
   res.json({
     name: "Stock Price Realtime API",
     versions: {
@@ -75,7 +84,7 @@ app.use((req, res) => {
   res.status(404).json({
     success: false,
     error: `Route not found: ${req.method} ${req.originalUrl}`,
-    hint: "Visit / for available endpoints",
+    hint: "Visit /info for available endpoints or / for the API doc page",
   });
 });
 
