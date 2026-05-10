@@ -52,7 +52,7 @@ app.get("/health", (_req, res) => {
 
 // API Doc page
 app.get("/", (_req, res) => {
-  res.sendFile(resolve(__dirname, "../api-docs.html"));
+  res.sendFile(resolve(__dirname, "./doc/api-docs.html"));
 });
 
 // API usage info
