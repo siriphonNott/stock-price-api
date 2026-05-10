@@ -1,0 +1,15 @@
+{
+  "name": "stock-price-api",
+  "version": "1.0.0",
+  "description": "Realtime stock price API using Yahoo Finance and Finnhub + Express.js",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^4.18.2"
+  }
+}
